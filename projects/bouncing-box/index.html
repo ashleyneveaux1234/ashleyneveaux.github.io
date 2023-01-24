@@ -40,7 +40,10 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
-
+			var postionX = 0;
+			var boardWidth =0;
+			var speed = 0;
+			var randNum = Math.random() * 100; 
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
 			
@@ -50,6 +53,8 @@
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX) {
 				box.css("left", newPositionX);
+				moveBoxto(0);
+				moveBoxto(10);
 			}
 
 			// changes the text displayed on the Box
@@ -63,6 +68,8 @@
 			
 			// TODO 2 - Variable declarations 
 			var positionX = 0;
+			
+		
 
 			
 			/* 
@@ -70,24 +77,30 @@
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
-			function update() {
-
+		function update() {
+			moveBoxto(positionX);
+			var positionX = 0;
 	// Frame 1
-positionX = 0 + 10;         // positionX = 10
-moveBoxTo(positionX);
+	if positionX = 0 + 10;         // positionX = 10
+		moveBoxTo(positionX);
+		
 
-// Frame 2
-positionX = 10 + 10;         // positionX = 20
-moveBoxTo(positionX);
 
-// Frame 3
-positionX = 20 + 10;         // positionX = 30
-moveBoxTo(positionX);
+	// Frame 2
+	else if positionX = 10 + 10;         // positionX = 20
+	moveBoxTo(positionX);
 
-// Frame 4
-positionX = 30 + 10;         // positionX = 40
-moveBoxTo(positionX);
 
+	// Frame 3
+	positionX = 20 + 10;         // positionX = 30
+	moveBoxTo(positionX);
+
+	// Frame 4
+	positionX = 30 + 10;         // positionX = 40
+	moveBoxTo(positionX);
+	// Frame 5 
+	positionX = 40 + 10;
+	moveBoxTo(postitionX); 		  // position = 50
 			};
 
 			/* 
@@ -97,10 +110,11 @@ moveBoxTo(positionX);
 			*/
 			function handleBoxClick() {
 				positionX = 0;
+				speed *= 100; 
 			
 		 //  increase the points variable by 1
 
-				 changeBoxText(points);
+				 changeBoxText(1);
 			};
 		})();
 	</script>
