@@ -40,10 +40,7 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
-			var postionX = 0;
-			var boardWidth =0;
-			var speed = 0;
-			var randNum = Math.random() * 100; 
+			
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
 			
@@ -53,12 +50,13 @@
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX) {
 				box.css("left", newPositionX);
-				moveBoxto(0);
-				moveBoxto(10);
+				
 			}
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
+				positionX = 0;
+				changeBoxText(1);
 				box.text(newText);
 			}
 
@@ -68,7 +66,11 @@
 			
 			// TODO 2 - Variable declarations 
 			var positionX = 0;
-			
+			var positionY = 0;
+			var points = 0;
+			var speed = 10;
+			var speedY = 0;
+			var boardHeight = JQuery(window).height();
 		
 
 			
@@ -76,31 +78,11 @@
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
-			*/
-		function update() {
-			moveBoxto(positionX);
-			var positionX = 0;
-	// Frame 1
-	if positionX = 0 + 10;         // positionX = 10
-		moveBoxTo(positionX);
-		
-
-
-	// Frame 2
-	else if positionX = 10 + 10;         // positionX = 20
-	moveBoxTo(positionX);
-
-
-	// Frame 3
-	positionX = 20 + 10;         // positionX = 30
-	moveBoxTo(positionX);
-
-	// Frame 4
-	positionX = 30 + 10;         // positionX = 40
-	moveBoxTo(positionX);
-	// Frame 5 
-	positionX = 40 + 10;
-	moveBoxTo(postitionX); 		  // position = 50
+			*/ 
+			function update() {             
+				// Increase positionX value by 10
+				positionX = positionX + 10;  
+				moveBoxTo(positionX);
 			};
 
 			/* 
@@ -109,16 +91,20 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				positionX = 0;
+			positionX = 0; 
+
+			
+			
 				
 			
 		 //  increase the points variable by 1
 
-				 changeBoxText(1);
-				 if (speed + speed)
-					 speed +=3; 
+		 	changeBoxText(points);
+
+
+				
 			};
-		})();
+		}());
 	</script>
 </body>
 </html>
