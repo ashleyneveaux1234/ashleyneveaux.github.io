@@ -5,6 +5,9 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+		body {
+			background-color: green; 
+		}
 		.box {
 			width: 70px;
 			height: 70px;
@@ -48,15 +51,15 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
-				
+				box.css("top", newPositionY);
+
 			}
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
-				positionX = 0;
-				changeBoxText(1);
+				
 				box.text(newText);
 			}
 
@@ -69,7 +72,12 @@
 			var positionY = 0;
 			var points = 0;
 			var speed = 10;
-			var speedY = 0;
+			var speedY = 10;
+			var color1;
+			var color2;
+			var color3;
+			var colorStr;
+
 			var boardHeight = JQuery(window).height();
 		
 
@@ -81,8 +89,25 @@
 			*/ 
 			function update() {             
 				// Increase positionX value by 10
-				positionX = positionX + 10;  
-				moveBoxTo(positionX);
+				
+				moveBoxTo(positionX, positionY);
+				positionX = positionX + speed; 
+				positionX = positionY + speedY;
+				if (positionX > boardWidth - 85) {
+					speed = -speed;
+				}
+				if(positionX < 0){
+					speed = -speed;
+				}
+				if (positionY > boardHeight - 85 ){
+					speedY = -speedY;
+
+				}
+				if (positionY < 0){
+					speedY = -speedY;
+				}
+
+
 			};
 
 			/* 
@@ -91,20 +116,43 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-			positionX = 0; 
-
-			
-			
+				//changes position
 				
-			
-		 //  increase the points variable by 1
-
-		 	changeBoxText(points);
-
-
 				
+				// changes number
+				var randNum = Math.random() * boardWidth;
+				var randNumY = Math.random() * boardHeight;
+				positionX = randNum;
+				positionY = randNumY;
+				
+
+			//  increase the points variable by 1
+				
+				changeBoxText(points);
+				points++;
+				// gets faster
+				if( speed > 0){
+					speed += 3;
+				}  if(speed < 0){
+					speed -=3;
+				} 
+				changeBoxColorOnClick();
+
 			};
-		}());
+			function changeBoxColorOnClick(){
+				var color1 = Math.random(0, 255) * 100;
+				var color2 = Math.random(0, 255) * 100;
+				var color3 = Math.random(0, 255) * 100;
+				var colorStr = "rgb(" + color1 + "," + color2 + color3 + ")";
+			
+				console.log(color1);
+				console.log(colorStr);
+				box.css('background -color', colorStr);
+		}
+
+		})();
+
+
 	</script>
 </body>
 </html>
