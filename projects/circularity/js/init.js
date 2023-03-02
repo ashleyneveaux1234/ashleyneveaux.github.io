@@ -20,12 +20,36 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-
+        var circle;
+        var circles = [];
 
         // TODO 2 : Create a function that draws a circle 
-        
+        function drawCircle() {
+            // create the circle
+            //randomCircleArea(area, randomizeAlpha , addCross , border Color , borderThickness , randomRadialProps)
+            circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+
+            // set motion properties
+            physikz.addRandomVelocity(circle, canvas);
+
+            // add the circle to circles array, add to view 
+            circles.push(circle);
+            view.addChild(circle);
+        }
 
         // TODO 3 / 7 : Call the drawCircle() function 
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
+
 
 
         ////////////////////////////////////////////////////////////
@@ -37,17 +61,35 @@ var init = function (window) {
         In each frame, for every circle, it should redraw that circle
         and check to see if it has drifted off the screen.         
         */
-        function update() {
-            // TODO 4 : Update the circle's position //
+      var update = function(){
 
+      
+            // TODO 4 : Update the circle's position //
+            physikz.updatePosition(circles[0]);
+            physikz.updatePosition(circles[1]);
+            physikz.updatePosition(circles[2]);
+            physikz.updatePosition(circles[3]);
+            physikz.updatePosition(circles[4]);
+          
             
+      
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-           
+           game.checkCirclePosition(circles[0]);
+           game.checkCirclePosition(circles[1]);
+           game.checkCirclePosition(circles[2]);
+           game.checkCirclePosition(circles[3]);
+           game.checkCirclePosition(circles[4]);
+
+      }
 
             // TODO 9 : Iterate over the array
-           
-            
+           for (var i = 0; i < circles.length; i++){
+            physikz.updatePosition(circles[i]);
+            game.checkCirclePosition(circles[i]);
+           }
         }
+            
+        
     
         /* 
         This Function should check the position of a circle that is passed to the 
@@ -62,8 +104,12 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            
-
+            if (circle.x < 0){
+                circle.x = canvas.width
+            }
+            if (circle.x < 0 ){
+                circle.x = canvas.Height 
+            }
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
         }
