@@ -38,6 +38,7 @@ var init = function (window) {
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
+        for (var i = 0; i < 600; i++){
         drawCircle();
         drawCircle();
         drawCircle();
@@ -49,8 +50,8 @@ var init = function (window) {
         drawCircle();
         drawCircle();
         drawCircle();
-
-
+    }
+  
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -83,6 +84,7 @@ var init = function (window) {
       }
 
             // TODO 9 : Iterate over the array
+            
            for (var i = 0; i < circles.length; i++){
             physikz.updatePosition(circles[i]);
             game.checkCirclePosition(circles[i]);
@@ -96,7 +98,7 @@ var init = function (window) {
         Function. If that circle drifts off the screen, this Function should move
         it to the opposite side of the screen.
         */
-        game.checkCirclePosition = function(circle) {
+        game.checkCirclePosition = function(circles) {
 
             // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
             if ( circle.x > canvas.width ) {
@@ -104,12 +106,16 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            if (circle.x < 0){
-                circle.x = canvas.width
+           else if (circle.x < 0){
+                circle.x = canvas.width;
             }
             if (circle.x < 0 ){
-                circle.x = canvas.Height 
+                circle.y = canvas.height;
             }
+            else if (circle.y < 0 ){
+                        circle.y = canvas.height;
+            }
+
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
         }
@@ -128,7 +134,9 @@ var init = function (window) {
         
         app.addUpdateable(window.opspark.game);
     }
-};
+
+
+
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
