@@ -96,16 +96,22 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x + 1;
+            tree.x = tree.x + 3; // takes the current x postion of the tree and subtracts from current x pos to make it move left and 
 
-            if (tree.x < -200) {
+            // checck if the tree has moved off the canvas and if it has it resets to the right side of the canvas 
+            if (tree.x < -300) {
             tree.x = canvasWidth;
         }
             
             // TODO 5: Part 2 - Parallax
+            // loops through the buiidlings array to access each index of the array, move it and check its position  on the canvas 
             for (var  i = 0; i < buildings.length; i++){
                 var building =  buildings[i];
-                building.x = building.x - 1;
+                building.x = building.x - 3; // moves the building
+
+                if (building.x < -300){ // checks the position of the building 
+                    building.x = canvasWidth; // resets the building to the right side of the canvas 
+                }
          }
 
         } // end of update function - DO NOT DELETE
