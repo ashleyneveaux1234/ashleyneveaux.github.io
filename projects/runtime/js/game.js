@@ -25,8 +25,7 @@
             return score;
         }
 
-        // XXX: this is a glorious hack in order to get halle because
-        // we forgot to pass it in originally
+        
         function getHalle() {
             var halleObj = view.children.filter(function(c) { return !!c.jumpfly; });
             return halleObj.length > 0 ? halleObj[0] : null;
@@ -230,8 +229,8 @@
 
             app.addUpdateable({update: function() {
                 
-                // lazily instantiate items just before the come onto the screen
-                // to improve performance
+                //  make items appear
+                // improve performance
                 frameNo += 1;
                 var displacement = -levelData.speed*frameNo;
                 items.forEach(function(item) {
@@ -246,7 +245,7 @@
                     }
                 });
 
-                // remove objects that have been moved offscreen
+                // remove objects that are no longer on screen
                 var offscreenLeft = view.children.filter(function(obj) {
                     return obj.x && obj.x < -100 && space.indexOf(obj) != -1;
                 });
