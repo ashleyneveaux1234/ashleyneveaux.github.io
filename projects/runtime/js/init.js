@@ -38,7 +38,7 @@ var init = function (window) {
             
 
     
-    var help = draw.textfield('MOVES || up: jump | right: flying jump | down: duck | space: fire | q your mom!', 
+    var help = draw.textfield('MOVES || up: jump | right: flying jump | down: duck | space: fire | q DEATH!', 
         '20px Arial',
         '#000000', 'left');
     help.x = 10;
