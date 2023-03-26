@@ -106,7 +106,7 @@ var background = function (window) {
                          building.x = 150*i;
                         building.y = groundY-buildingHeightDifferent[i];
                         background.addChild(building);
-                        buildings.push(building);
+                        buildings = [];
                  }
                   
                     
